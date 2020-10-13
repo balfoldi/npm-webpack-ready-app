@@ -1,7 +1,16 @@
 @import "~bootstrap/scss/bootstrap";
 
-$red: rgb(255, 20, 20);
+$black: rgb(0, 0, 0);
 
 p {
-  color: $red;
+  color: $black;
+}
+
+#searchBar {
+  width: 100%;
+  height: 32px;
+  border-radius: 3px;
+  border: 1px;
+  padding: 5px 10px;
+  font-size: 12px
 }

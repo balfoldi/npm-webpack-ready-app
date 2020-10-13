@@ -23,5 +23,19 @@
     "bootstrap": "^4.5.2",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1"
-  }
+  },
+  "name": "app_rawg",
+  "description": "Ready to use webpack app",
+  "version": "1.0.0",
+  "main": "postcss.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/balfoldi/npm-webpack-ready-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/balfoldi/npm-webpack-ready-app/issues"
+  },
+  "homepage": "https://github.com/balfoldi/npm-webpack-ready-app#readme"
 }

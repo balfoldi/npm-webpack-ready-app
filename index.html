@@ -1,15 +1,23 @@
 <!DOCTYPE html>
-<html class='h-100'>
+<html>
 <head>
 	<title>Web app</title>
   <link rel='stylesheet' href='dist/bundle.css' />
 </head>
 
-<body class=''>
-  <div class='container'>
-    <p>Sass pluged</p>
-    <div class='alert alert-danger'>Bootstrap pluged</div>
-	</div>
+<body>
+
+  <form class="form-inline my-2 my-lg-0">
+    <input class="input is-large" type="text" style="display:block mb-auto" id="searchBar" placeholder="Search your favorite game here" ; /><br /><br />
+    <input class="button is-info" type="submit" id="searchButton"/>
+  </form>
+
+  <a href="#">Home</a>
+  <a href="#pagelist">PageList</a>
+  <a href="#pagelist/borderlands">PageList borderlands</a>
+
+  <section id="pageContent">Choissez un lien</section>
 </body>
+
 <script src='dist/bundle.js'></script>
 </html>

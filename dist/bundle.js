@@ -86,6 +86,18 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./js/home.js":
+/*!********************!*\
+  !*** ./js/home.js ***!
+  \********************/
+/*! exports provided: Home */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Home\", function() { return Home; });\nconsole.log(\"home\");\n\nvar Home = function Home() {\n  var argument = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : \"\";\n  console.log(\"Home\", argument);\n  pageContent.innerHTML = \"\\n\\n\";\n};\n\n\n\n//# sourceURL=webpack:///./js/home.js?");
+
+/***/ }),
+
 /***/ "./js/index.js":
 /*!*********************!*\
   !*** ./js/index.js ***!
@@ -94,7 +106,43 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sass_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../sass/styles.scss */ \"./sass/styles.scss\");\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.js\");\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(bootstrap__WEBPACK_IMPORTED_MODULE_1__);\n\n //import 'jquery'\n//import 'popper.js'\n\nconsole.log(\"TEST\", \".env pluged\");\n\n//# sourceURL=webpack:///./js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sass_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../sass/styles.scss */ \"./sass/styles.scss\");\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.js\");\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(bootstrap__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _route__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./route */ \"./js/route.js\");\n\n\nvar pageArgument;\n\nvar setRoute = function setRoute() {\n  var path = window.location.hash.substring(1).split(\"/\");\n  pageArgument = path[1] || \"\";\n  var pageContent = document.getElementById(\"pageContent\");\n  console.log(path);\n  _route__WEBPACK_IMPORTED_MODULE_2__[\"routes\"][path[0]](pageArgument);\n  return true;\n};\n\nwindow.addEventListener(\"hashchange\", function () {\n  return setRoute();\n});\nwindow.addEventListener(\"DOMContentLoaded\", function () {\n  return setRoute();\n});\nvar searchBar = document.getElementById('searchBar');\nconsole.log(searchBar.value);\n\nvar searching = function searching() {\n  console.log(searchBar.value);\n};\n\ndocument.getElementById(\"searchButton\").addEventListener(\"click\", searching);\nconsole.log(searchBar);\n/*\nvar selector = document.getElementById('Game');\nvar \nfunction search()\n*/\n\n\n\n//# sourceURL=webpack:///./js/index.js?");
+
+/***/ }),
+
+/***/ "./js/page_detail.js":
+/*!***************************!*\
+  !*** ./js/page_detail.js ***!
+  \***************************/
+/*! exports provided: PageDetail */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"PageDetail\", function() { return PageDetail; });\nconsole.log(\"pagedetail\");\n\nvar PageDetail = function PageDetail(argument) {\n  console.log(\"Home\", argument);\n\n  var preparePage = function preparePage() {\n    var cleanedArgument = argument.replace(/\\s+/g, \"-\");\n\n    var fetchGame = function fetchGame(url, argument) {\n      var finalURL = url + argument;\n      fetch(\"\".concat(finalURL)).then(function (response) {\n        return response.json();\n      }).then(function (response) {\n        console.log(response);\n        var name = response.name,\n            released = response.released,\n            description = response.description,\n            background_image = response.background_image,\n            clip = response.clip,\n            rating = response.rating,\n            ratings_count = response.ratings_count;\n        console.log(clip.clip);\n        pageContent.innerHTML = \"\\n            <section class=\\\"page-detail\\\">\\n              <div class=\\\"article\\\">\\n                <img class='background_image' src='\".concat(background_image, \"' alt='game's background'>\\n                <h1 class=\\\"title\\\">\").concat(name, \"</h1>\\n                <h3>\").concat(rating, \"/5 on \").concat(ratings_count, \" reviews</h3>\\n                <h5><strong>Description</strong></h5>\\n                <p class=\\\"descri'ption\\\">\").concat(description, \"</p>\\n                <p class=\\\"release-date\\\">Release date : \").concat(released, \"<span></span></p>\\n                <h2><strong>Trailer</strong></h2>\\n                <video controls=\\\"controls\\\" src=\\\"\").concat(clip.clip, \"\\\"></video>\\n                <div id='screenshots'></div>\\n              </div>\\n            </section>\\n            \");\n        fetch(\"\".concat(finalURL, \"/screenshots\")).then(function (response) {\n          return response.json();\n        }).then(function (response) {\n          console.log(response);\n          var screenshotsDatas = response.results.slice(0, 3);\n          screenshotsDatas.forEach(function (sceenshotData) {\n            document.querySelector(\"#screenshots\").insertAdjacentHTML(\"beforeend\", \"\\n                <img src='\".concat(sceenshotData.image, \"' alt=\\\"game'screenshot\\\">\\n                \"));\n          });\n        });\n      });\n    };\n\n    fetchGame(\"https://api.rawg.io/api/games/\", cleanedArgument);\n  };\n\n  var render = function render() {\n    pageContent.innerHTML = \"\\n        loading...\\n      \";\n    preparePage();\n  };\n\n  render();\n};\n\n\n\n//# sourceURL=webpack:///./js/page_detail.js?");
+
+/***/ }),
+
+/***/ "./js/pagelist.js":
+/*!************************!*\
+  !*** ./js/pagelist.js ***!
+  \************************/
+/*! exports provided: PageList */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"PageList\", function() { return PageList; });\nconsole.log(\"pagelist\");\n\nvar PageList = function PageList() {\n  var argument = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : \"\";\n  console.log(\"Home\", argument);\n\n  var preparePage = function preparePage() {\n    var cleanedArgument = argument.replace(/\\s+/g, \"-\");\n    var articles = \"\";\n\n    var fetchList = function fetchList(url, argument) {\n      var finalURL = url;\n\n      if (argument) {\n        finalURL = url + \"?search=\" + argument;\n      }\n\n      fetch(\"\".concat(finalURL)).then(function (response) {\n        return response.json();\n      }).then(function (response) {\n        response.results.forEach(function (article) {\n          console.log(response);\n          articles += \"\\n                    <div class=\\\"card\\\" style=\\\"width:25rem\\\">\\n                      <img class=\\\"card-img-top\\\" style=width:auto;max-width:25rem;height:auto;padding:1rem;\\\" src=\\\"\".concat(article.background_image, \"\\\">\\n                      <h1>\").concat(article.name, \"</h1>\\n                      <span>\").concat(article.platforms.map(function (system) {\n            return \"<button>\".concat(system.platform.name, \"</button>\");\n          }).join(' '), \"</span>\\n                      <a href = \\\"#pagedetail/\").concat(article.id, \"\\\">\").concat(article.id, \"</a>\\n                    </div>\\n                  \");\n        });\n        document.querySelector(\".page-list .articles\").innerHTML = articles;\n      });\n    };\n\n    fetchList(\"https://api.rawg.io/api/games\", cleanedArgument);\n  };\n\n  var render = function render() {\n    pageContent.innerHTML = \"\\n        <section class=\\\"page-list\\\">\\n          <div class=\\\"articles\\\">...loading</div>\\n        </section>\\n      \";\n    preparePage();\n  };\n\n  render();\n};\n\n\n\n//# sourceURL=webpack:///./js/pagelist.js?");
+
+/***/ }),
+
+/***/ "./js/route.js":
+/*!*********************!*\
+  !*** ./js/route.js ***!
+  \*********************/
+/*! exports provided: routes */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"routes\", function() { return routes; });\n/* harmony import */ var _home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home */ \"./js/home.js\");\n/* harmony import */ var _pagelist__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pagelist */ \"./js/pagelist.js\");\n/* harmony import */ var _page_detail__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./page_detail */ \"./js/page_detail.js\");\nconsole.log(\"routes\");\nvar routes = {\n  \"\": _home__WEBPACK_IMPORTED_MODULE_0__[\"Home\"],\n  \"pagelist\": _pagelist__WEBPACK_IMPORTED_MODULE_1__[\"PageList\"],\n  \"pagedetail\": _page_detail__WEBPACK_IMPORTED_MODULE_2__[\"PageDetail\"]\n};\n\n\n\n\n\n//# sourceURL=webpack:///./js/route.js?");
 
 /***/ }),
 
