@@ -15,14 +15,16 @@ const setRoute = () => {
 window.addEventListener("hashchange", () => setRoute());
 window.addEventListener("DOMContentLoaded", () => setRoute());
 
-/*
 const searchBar = document.getElementById('searchBar');
 console.log(searchBar.value);
 
-var searchBar = function searchBar() {
-
+var searching = function searching() {
+  console.log(searchBar.value);
+  
 };
 
+document.getElementById("searchButton").addEventListener("click", searching);
+console.log(searchBar);
 
 /*
 var selector = document.getElementById('Game');
